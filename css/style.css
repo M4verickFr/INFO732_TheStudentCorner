@@ -1,0 +1,30 @@
+section.masthead {
+    position: relative;
+    background-color: #343a40;
+    background: url("../assets/img/bg-masthead.jpg") no-repeat center center;
+    background-size: cover;
+    padding-top: 8rem;
+    padding-bottom: 8rem;
+  }
+  section.masthead:before {
+    content: "";
+    position: absolute;
+    background-color: #1c375e;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    opacity: 0.5;
+  }
+  section.masthead h1, section.masthead .h1 {
+    font-size: 2rem;
+  }
+  @media (min-width: 768px) {
+    section.masthead {
+      padding-top: 12rem;
+      padding-bottom: 12rem;
+    }
+    section.masthead h1, section.masthead .h1 {
+      font-size: 3rem;
+    }
+  }
