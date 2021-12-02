@@ -32,9 +32,6 @@ if (isset(parameters()["r"])) {
 		strpos($controller, "Controller"));
 	}
 
-	if (isset($c->rolepermissions) && !in_array(get_role(), $c->rolepermissions))
-		header('Location: .');
-
 	$c->$action();	
 
 } else {

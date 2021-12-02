@@ -15,12 +15,12 @@
 	<header>
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container px-4 px-lg-5">
-                <a class="navbar-brand" href="#!">The Student Corner</a>
+                <a class="navbar-brand" href=".">The Student Corner</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                        <li class="nav-item"><a class="nav-link active" href="#!">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">About</a></li>
+                        <li class="nav-item"><a class="nav-link active" href=".">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href=".?r=about">About</a></li>
                         <!-- <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -32,18 +32,18 @@
                         </li> -->
                     </ul>
                 </div>
-				<form class="d-flex px-2">
+				<a class="text-decoration-none d-flex px-2" href=".?r=login">
 					<button class="btn btn-outline-dark" type="submit">
 						<i class="bi-cart-fill me-1"></i>
 						Connexion
 					</button>
-				</form>
-				<form class="d-flex px-2">
+				</a>
+				<a class="text-decoration-none d-flex px-2" href=".?r=register">
 					<button class="btn btn-outline-dark" type="submit">
 						<i class="bi-cart-fill me-1"></i>
 						Inscription
 					</button>
-				</form>
+				</a>
             </div>
         </nav>
 	</header>
