@@ -14,7 +14,7 @@
             <div class="col-md-6 col-lg-7 d-flex align-items-center">
               <div class="card-body p-4 p-lg-5 text-black">
 
-                <form>
+                <form action=".?r=login " method="post">
 
                   <div class="d-flex align-items-center mb-3 pb-1">
                     <i class="fas fa-cubes fa-2x me-3" style="color: #ff6219;"></i>
@@ -37,7 +37,6 @@
                     <button class="btn btn-dark btn-lg btn-block" type="button">Login</button>
                   </div>
 
-                  <!-- <a class="small text-muted" href="#!">Forgot password?</a> -->
                   <p class="mb-5 pb-lg-2" style="color: #393f81;">Don't have an account? <a href=".?r=register" style="color: #393f81;">Register here</a></p>
                 </form>
 
@@ -49,27 +48,3 @@
     </div>
   </div>
 </section>
-
-
-
-<!-- <div class="login-container">
-  <h2 id="connexion">Connexion</h2>
-  <div class="login-form">
-    <form action=".?r=login " method="post">
-      <div class="form-group">
-        <label for="uname">Identifiant</label>
-        <input type="text" name="uname" id="uname" required>
-      </div>
-      <div class="form-group">
-        <label for="psw">Mot de passe</label>
-        <input type="password" name="psw" id="psw" required>
-      </div>
-      <div class="login-bttm">
-        <button type="submit">Connexion</button>
-        <div class="error">
-          <?php if ($data == 'error') print("Identifiant ou mot de passe invalide"); ?>
-        </div>
-      </div>
-    </form>
-  </div>
-</div> -->
