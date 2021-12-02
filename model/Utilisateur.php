@@ -52,18 +52,26 @@ class Utilisateur extends Model {
 	}
 
 
-	public function getOffre($idutilisateur) {
-		$st = db()->prepare("SELECT * from listeoffres, produit WHERE listeoffres.:idutilisateur = 1 AND listeoffres.idoffre = produit.idproduit ");
+	public static function getOffre($idutilisateur) {
+		$st = db()->prepare("SELECT * from listeoffres, produit WHERE listeoffres.idutilisateur = :idutilisateur AND listeoffres.idoffre = produit.idproduit ");
 		$st->bindValue(":idutilisateur", $idutilisateur);
 		$st->execute();
-		return $st;
+		$list = array();
+		while($row = $st->fetch(PDO::FETCH_ASSOC)) {
+            $list[] = $row;
+        }
+        return $list;
 	}
 
 	public function getDemandes($idutilisateur) {
 		$st = db()->prepare("SELECT * from listedemandes, produit WHERE listedemandes.:idutilisateur = 1 AND listedemandes.iddemande = produit.idproduit ");
 		$st->bindValue(":idutilisateur", $idutilisateur);
 		$st->execute();
-		return $st;
+		$list = array();
+        while($row = $st->fetch(PDO::FETCH_ASSOC)) {
+            $list[] = $row;
+        }
+        return $list;
 	}
 }
 
