@@ -3,7 +3,7 @@
 
 // Modifier la dbname (votre login), login et mot de passe
 
-$db = new PDO("mysql:host=localhost;dbname=info732","maverick","shadow");
+$db = new PDO("mysql:host=localhost;dbname=info732","root","");
 $db->exec("SET NAMES 'utf8';");
 
 

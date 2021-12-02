@@ -100,10 +100,10 @@ CREATE TABLE IF NOT EXISTS listeoffres (
 
 CREATE TABLE IF NOT EXISTS listedemandes (
     idutilisateur int(11) NOT NULL ,
-    idoffre int(11) NOT NULL ,
-    PRIMARY KEY (idutilisateur,idoffre),
+    iddemande int(11) NOT NULL ,
+    PRIMARY KEY (idutilisateur,iddemande),
     FOREIGN KEY (idutilisateur) REFERENCES utilisateur(idutilisateur),
-    FOREIGN KEY (idoffre) REFERENCES produit(idproduit)
+    FOREIGN KEY (iddemande) REFERENCES produit(idproduit)
 ); 
 
 INSERT INTO `utilisateur` (`idutilisateur`, `nom`, `prenom`, `email`, `password`, `datenaissance`, `dateinscription`, `idcampus`, `connecte`) VALUES 
