@@ -10,6 +10,17 @@ DROP TABLE IF EXISTS listeoffres;
 DROP TABLE IF EXISTS listedemandes;
 DROP TABLE IF EXISTS campus;
 DROP TABLE IF EXISTS categorie;
+DROP TABLE IF EXISTS role;
+
+CREATE TABLE IF NOT EXISTS role (
+  idrole int(11) NOT NULL AUTO_INCREMENT,
+  name_role varchar(100) NOT NULL,
+  PRIMARY KEY (idrole)
+);
+
+INSERT INTO role (idrole,name_role) VALUES
+(1,"Utilisateur"),
+(2,"Administrateur");
 
 
 CREATE TABLE IF NOT EXISTS campus (
@@ -30,10 +41,13 @@ CREATE TABLE IF NOT EXISTS utilisateur (
   email varchar(100) NOT NULL,
   password varchar(100) NOT NULL,
   datenaissance DATE NOT NULL,
+  idrole int(11) NULL,
   dateinscription DATETIME NOT NULL,
   idcampus int(11) NOT NULL,
   connecte boolean NOT NULL,
-  PRIMARY KEY (idutilisateur)
+  deleted boolean NOT NULL default FALSE,
+  PRIMARY KEY (idutilisateur),
+  FOREIGN KEY (idrole) REFERENCES role(idrole)
 );
 
 CREATE TABLE IF NOT EXISTS avis (
