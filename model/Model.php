@@ -22,17 +22,10 @@ class Model {
 					$classes_update[strtolower($value)] = $value;
 				}
 				foreach($row as $field => $value) {
-					if (substr($field, 0,2) == "id") {
+					if (substr($field, 0,2) == "id" && $field != "id".$table) {
 						$linkedField = substr($field, 2);
-						if (strpos($linkedField, '_') !== false)
-							$linkedField = substr($linkedField, 0, strpos($linkedField, "_"));
-							
 						$linkedClass = $classes_update[$linkedField];
-						if ($linkedClass != get_class($this)) {
-							$this->$field = new $linkedClass($value);
-						}
-						else
-							$this->$field = $value;
+						$this->$field = new $linkedClass($value);
 					} else {
 						$this->$field = $value;
 					}
@@ -54,6 +47,7 @@ class Model {
 		try{		
 			$request = db()->prepare("INSERT INTO " . strtolower(get_class($this)) . "(" . implode(',',$fields) .") VALUES (\"" . implode('","',$values) . "\")");
 			$request->execute();
+
 			return db()->lastInsertId();
 
 		} catch(PDOException $e) {

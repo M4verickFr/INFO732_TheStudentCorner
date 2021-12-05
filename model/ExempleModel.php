@@ -8,7 +8,7 @@ class ExempleModel extends Model {
 
 
 	public function __toString() {
-		return get_class($this).": ".$this->comment;
+		return get_class($this).": ".$this->title;
 	}
 
 	public function getExempleModel() {

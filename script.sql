@@ -1,24 +1,24 @@
 set NAMES 'UTF8';
 
-DROP TABLE IF EXISTS utilisateur;
+DROP TABLE IF EXISTS listedemandes;
+DROP TABLE IF EXISTS listeoffres;
 DROP TABLE IF EXISTS avis;
 DROP TABLE IF EXISTS proposition;
 DROP TABLE IF EXISTS produit;
 DROP TABLE IF EXISTS service;
 DROP TABLE IF EXISTS bien;
-DROP TABLE IF EXISTS listeoffres;
-DROP TABLE IF EXISTS listedemandes;
 DROP TABLE IF EXISTS campus;
 DROP TABLE IF EXISTS categorie;
+DROP TABLE IF EXISTS utilisateur;
 DROP TABLE IF EXISTS role;
 
 CREATE TABLE IF NOT EXISTS role (
   idrole int(11) NOT NULL AUTO_INCREMENT,
-  name_role varchar(100) NOT NULL,
+  nom_role varchar(100) NOT NULL,
   PRIMARY KEY (idrole)
 );
 
-INSERT INTO role (idrole,name_role) VALUES
+INSERT INTO role (idrole,nom_role) VALUES
 (1,"Utilisateur"),
 (2,"Administrateur");
 
@@ -40,11 +40,9 @@ CREATE TABLE IF NOT EXISTS utilisateur (
   prenom varchar(100) NOT NULL,
   email varchar(100) NOT NULL,
   password varchar(100) NOT NULL,
-  datenaissance DATE NOT NULL,
   idrole int(11) NULL,
-  dateinscription DATETIME NOT NULL,
+  dateinscription DATETIME NULL,
   idcampus int(11) NOT NULL,
-  connecte boolean NOT NULL,
   deleted boolean NOT NULL default FALSE,
   PRIMARY KEY (idutilisateur),
   FOREIGN KEY (idrole) REFERENCES role(idrole)
@@ -113,14 +111,14 @@ CREATE TABLE IF NOT EXISTS listeoffres (
 
 
 CREATE TABLE IF NOT EXISTS listedemandes (
-    idutilisateur int(11) NOT NULL ,
+    idutilisateur int(11) NOT NULL,
     iddemande int(11) NOT NULL ,
     PRIMARY KEY (idutilisateur,iddemande),
     FOREIGN KEY (idutilisateur) REFERENCES utilisateur(idutilisateur),
     FOREIGN KEY (iddemande) REFERENCES produit(idproduit)
 ); 
 
-INSERT INTO `utilisateur` (`idutilisateur`, `nom`, `prenom`, `email`, `password`, `datenaissance`, `dateinscription`, `idcampus`, `connecte`) VALUES 
-(NULL, 'Smith', 'Jhon', 'jhon.smith@etu.univ-smb.fr', 'password', '2000-10-11', '2021-11-17 09:20:51', '1', '0'),
-(NULL, 'Does', 'Jhon', 'jhon.does@etu.univ-smb.fr', 'password', '2000-05-16', '2021-11-16 09:20:51', '2', '0')
+INSERT INTO `utilisateur` (`idutilisateur`, `nom`, `prenom`, `email`, `password`, `dateinscription`, `idcampus`) VALUES 
+(1, 'Smith', 'Jhon', 'jhon.smith@etu.univ-smb.fr', 'password', '2021-11-17 09:20:51', 1),
+(2, 'Does', 'Jhon', 'jhon.does@etu.univ-smb.fr', 'password', '2021-11-16 09:20:51', 2)
 ; 

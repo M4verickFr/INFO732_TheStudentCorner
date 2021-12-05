@@ -6,7 +6,7 @@ class Listeoffres extends Model {
 	protected $_idoffre;
 
 	public function __toString() {
-		return get_class($this).": ".$this->nom;
+		return get_class($this);
 	}
 
 }

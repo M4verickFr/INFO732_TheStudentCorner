@@ -21,20 +21,3 @@
 		</div>
 	</div>
 </section>
-
-
-
-<?php if (isset($_SESSION['user']) && $_SESSION['user']['idrole'] == 3){?>
-
-	<script src="js/presentation.js"></script>
-
-	<input id="btn-change" class="btn"
-	type="button"
-	value="Modifier">
-
-	<input id="btn-validate" class="btn"
-	type="button"
-	value="Valider"
-	hidden>
-<?php } ?>
-

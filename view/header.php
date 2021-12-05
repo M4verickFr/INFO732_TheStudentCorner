@@ -3,6 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>The Student Corner</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.0/font/bootstrap-icons.css">
 	<link rel="stylesheet" type="text/css" href="./css/bootstrap.css"/>
 	<link rel="stylesheet" type="text/css" href="./css/style.css"/>
 
@@ -12,6 +13,7 @@
 </head>
 <body>
 	<main>
+	<!-- <?php var_dump($_SESSION); ?> -->
 	<header>
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container px-4 px-lg-5">
@@ -21,29 +23,35 @@
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
                         <li class="nav-item"><a class="nav-link active" href=".">Home</a></li>
                         <li class="nav-item"><a class="nav-link" href=".?r=about">About</a></li>
-                        <!-- <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#!">All Products</a></li>
-                                <li><hr class="dropdown-divider" /></li>
-                                <li><a class="dropdown-item" href="#!">Popular Items</a></li>
-                                <li><a class="dropdown-item" href="#!">New Arrivals</a></li>
-                            </ul>
-                        </li> -->
                     </ul>
                 </div>
-				<a class="text-decoration-none d-flex px-2" href=".?r=login">
-					<button class="btn btn-outline-dark" type="submit">
-						<i class="bi-cart-fill me-1"></i>
-						Connexion
-					</button>
-				</a>
-				<a class="text-decoration-none d-flex px-2" href=".?r=register">
-					<button class="btn btn-outline-dark" type="submit">
-						<i class="bi-cart-fill me-1"></i>
-						Inscription
-					</button>
-				</a>
+				<?php if (isset($_SESSION['user'])){?>
+					<a class="text-decoration-none d-flex px-2" href=".?r=user/profil">
+						<button class="btn btn-outline-dark" type="submit">
+							<i class="bi-cart-fill me-1"></i>
+							Mon Profil
+						</button>
+					</a>
+					<a class="text-decoration-none d-flex px-2" href=".?r=user/logout">
+						<button class="btn btn-outline-dark" type="submit">
+							<i class="bi-cart-fill me-1"></i>
+							Déconnexion
+						</button>
+					</a>
+				<?php } else {?>
+					<a class="text-decoration-none d-flex px-2" href=".?r=user/login">
+						<button class="btn btn-outline-dark" type="submit">
+							<i class="bi-cart-fill me-1"></i>
+							Connexion
+						</button>
+					</a>
+					<a class="text-decoration-none d-flex px-2" href=".?r=user/register">
+						<button class="btn btn-outline-dark" type="submit">
+							<i class="bi-cart-fill me-1"></i>
+							Inscription
+						</button>
+					</a>
+				<?php } ?>
             </div>
         </nav>
 	</header>

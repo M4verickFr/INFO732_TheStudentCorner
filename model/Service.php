@@ -8,7 +8,7 @@ class Service extends Model {
 	protected $_typeservice;
 
 	public function __toString() {
-		return get_class($this).": ".$this->nom;
+		return get_class($this);
 	}
 
 }

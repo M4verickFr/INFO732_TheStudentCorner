@@ -10,7 +10,7 @@ class Proposition extends Model {
 	protected $_vue;
 
 	public function __toString() {
-		return get_class($this).": ".$this->nom;
+		return get_class($this).": ".$this->titre;
 	}
 
 }

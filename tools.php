@@ -19,19 +19,7 @@ function get_role(){
 	if(isset($_SESSION["user"])){
 		return $_SESSION["user"]["idrole"];
 	}
-	return -999;
-}
-
-function parametersExist($parameters) {
-	$tmp = array_filter(parameters(), function($var){return $var != null;} );
-	$intersect = array_intersect($parameters, array_keys($tmp));
-	return count($intersect) == count($parameters);
-}
-
-function get_id(){
-	if(isset($_SESSION["user"]["isuser"])){
-		return $_SESSION["user"]["isuser"];
-	}
+	return -1;
 }
 
 function go_back(){

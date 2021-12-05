@@ -7,7 +7,7 @@ class Proposition extends Model {
 	protected $_typebien;
 
 	public function __toString() {
-		return get_class($this).": ".$this->nom;
+		return get_class($this);
 	}
 
 }
