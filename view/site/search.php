@@ -12,8 +12,8 @@
 			<div class="input-group-text p-0 mx-2">
 				<select class="form-select form-select-lg shadow-none bg-light border-0">
 					<option>Categories</option>
-					<option>Annecy</option>
-					<option>Chambery</option>
+					<option>Services</option>
+					<option>Biens</option>
 				</select>
 			</div>
 			<button class="input-group-text shadow-none px-4 btn-warning mx-2">
@@ -21,5 +21,6 @@
 			</button>
 		</div>
 
+		<!-- visuel incoming -->
 	</div>
 </section>

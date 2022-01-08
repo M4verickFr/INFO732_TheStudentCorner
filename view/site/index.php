@@ -4,8 +4,9 @@
 			<div class="col-xl-6">
 				<div class="text-center text-white">
 					<!-- Page heading-->
-					<h1 class="mb-5">Rejoints rapidement le site d'echange entre etudiants.</h1>
+					<h1 class="mb-5">Rejoins vite le site d'échanges entre étudiants !</h1>
 					<form class="form-subscribe" id="registerForm" action=".?r=user/register" method="post">
+
 						<!-- Email address input-->
 						<div class="row">
 							<div class="col">
@@ -15,9 +16,17 @@
 							</div>
 							<div class="col-auto"><button class="btn btn-primary btn-lg" id="submitButton" type="submit">Submit</button></div>
 						</div>
+						
 					</form>
+
 				</div>
+				
 			</div>
+			
 		</div>
+		
 	</div>
+
+
+
 </section>
