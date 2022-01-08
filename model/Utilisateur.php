@@ -54,5 +54,27 @@ class Utilisateur extends Model {
 		}
 		return $demandes;
 	}
+
+	public static function search($type, $search){
+
+		$idutilisateur = unserialize($_SESSION["user"])->idutilisateur;
+
+		$st = db()->prepare("SELECT idproduit, utilisateur.idutilisateur FROM utilisateur
+		Join offre on offre.idutilisateur = utilisateur.idutilisateur
+		Join produit on offre.idoffre = produit.idproduit
+		WHere type=$type and utilisateur.idutilisateur IS NOT NULL and utilisateur.idutilisateur != $idutilisateur and (nom LIKE '%$search%' or prenom LIKE '%$search%')");
+		$st->execute();
+		$res = array();
+
+		while($row = $st->fetch(PDO::FETCH_ASSOC)) {
+			$produit = new Produit($row['idproduit']);
+			$utilisateur = new Utilisateur($row['idutilisateur']);
+			$res[] = [$produit, $utilisateur];
+		}
+		return $res;
+
+	}
+
+
 }
 
