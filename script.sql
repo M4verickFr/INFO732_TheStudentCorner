@@ -1,7 +1,7 @@
 set NAMES 'UTF8';
 
-DROP TABLE IF EXISTS listedemandes;
-DROP TABLE IF EXISTS listeoffres;
+DROP TABLE IF EXISTS offre;
+DROP TABLE IF EXISTS demande;
 DROP TABLE IF EXISTS avis;
 DROP TABLE IF EXISTS proposition;
 DROP TABLE IF EXISTS produit;
@@ -89,7 +89,7 @@ INSERT INTO `produit` (`idproduit`, `nom`, `description`, `type`) VALUES
 (3, 'Téléphone', 'Bon état', 2),
 (4, 'Bureau', 'Neuf', 2);
 
-CREATE TABLE IF NOT EXISTS listeoffres (
+CREATE TABLE IF NOT EXISTS offre (
     idutilisateur int(11) NOT NULL ,
     idoffre int(11) NOT NULL ,
     PRIMARY KEY (idutilisateur,idoffre),
@@ -97,13 +97,12 @@ CREATE TABLE IF NOT EXISTS listeoffres (
     FOREIGN KEY (idoffre) REFERENCES produit(idproduit)
 ); 
 
-INSERT INTO `listeoffres` (`idutilisateur`, `idoffre`) VALUES 
+INSERT INTO `offre` (`idutilisateur`, `idoffre`) VALUES 
 (1, 1),
 (1, 2),
 (1, 4);
 
-
-CREATE TABLE IF NOT EXISTS listedemandes (
+CREATE TABLE IF NOT EXISTS demande (
     idutilisateur int(11) NOT NULL,
     iddemande int(11) NOT NULL ,
     PRIMARY KEY (idutilisateur,iddemande),
@@ -111,5 +110,5 @@ CREATE TABLE IF NOT EXISTS listedemandes (
     FOREIGN KEY (iddemande) REFERENCES produit(idproduit)
 ); 
 
-INSERT INTO `listedemandes` (`idutilisateur`, `iddemande`) VALUES 
+INSERT INTO `demande` (`idutilisateur`, `iddemande`) VALUES 
 (1, 3);

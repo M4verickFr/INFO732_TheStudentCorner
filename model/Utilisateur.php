@@ -31,9 +31,9 @@ class Utilisateur extends Model {
 		return false;
 	}
 
-	
+
 	public function getOffres() {
-		$st = db()->prepare("SELECT * from listeoffres WHERE idutilisateur = :idutilisateur");
+		$st = db()->prepare("SELECT * from offre WHERE idutilisateur = :idutilisateur");
 		$st->bindValue(":idutilisateur", $this->idutilisateur);
 		$st->execute();
 		$offres = array();
@@ -45,7 +45,7 @@ class Utilisateur extends Model {
 
 
 	public function getDemandes() {
-		$st = db()->prepare("SELECT * from listedemandes WHERE idutilisateur = :idutilisateur");
+		$st = db()->prepare("SELECT * from demande WHERE idutilisateur = :idutilisateur");
 		$st->bindValue(":idutilisateur", $this->idutilisateur);
 		$st->execute();
 		$demandes = array();

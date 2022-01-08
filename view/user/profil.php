@@ -48,8 +48,9 @@
 						<div class="row mb-4 d-flex justify-content-center">
 							<form class="col-md-12" action=".?r=user/profil" method="post" id="addProductForm">
 								<input type="hidden" value="addProduct" name="action" />
+								<input type="hidden" value="$name" name="to" />
 								<div class="input-group d-flex justify-content-around">
-									<select name="type" form="addProductForm" class="col-md-2 rounded">
+									<select name="type" class="col-md-2 rounded">
 										<option selected>Type...</option>
 										<option value="1">Service</option>
 										<option value="2">Produit</option>
@@ -59,7 +60,7 @@
 									<input type="text" id="desc" name="desc" placeholder="Description" class="col-md-6 rounded" />
 									
 									<div class="input-group-append">
-										<button class="btn btn-outline-secondary" type="submit">Ajouter</button>
+										<button class="btn btn-outline-secondary" type="submit" nmae="submit">Ajouter</button>
 									</div>
 								</div>
 							</form>
@@ -74,7 +75,7 @@
 
 					<div class="d-flex justify-content-between mt-3">
 						<p class="mb-0 align-self-center">$d->nom</p>
-						<button type="button" class="btn btn-primary btn-floating btn-remove">Remove</button>
+						<button type="button" class="btn btn-primary btn-floating btn-remove" data-id="$d->idproduit">Remove</button>
 					</div>
 
 					hop;

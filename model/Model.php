@@ -124,8 +124,6 @@ class Model {
 
 		if($limit) $sql .= " limit $limit";
 
-		var_dump($sql);
-
         $st = db()->prepare($sql);
         $st->execute();
         $list = array();

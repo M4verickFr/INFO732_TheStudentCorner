@@ -85,40 +85,72 @@ class UserController extends Controller {
 
   public function profil(){
     if (!isset($_SESSION["user"])) header('Location: .?r=user/login');
+    $user = unserialize($_SESSION["user"]);
 
     $params = [
       "action" => "",
+      "to" => "",
       "type" => "",
       "nom" => "",
       "desc" => "",
     ];
 
     if (empty(array_diff_key($params, parameters())) && parameters()["action"] == "addProduct") {
-      var_dump(parameters());
-
       $produit = new Produit();
-      $produit->$nom = parameters()["nom"];
-      $produit->$description = parameters()["desc"];
-      $produit->$type = parameters()["type"];
+      $produit->nom = parameters()["nom"];
+      $produit->description = parameters()["desc"];
+      $produit->type = parameters()["type"];
       $idproduit = $produit->insert();
 
-      if (parameters()["type"] == "1") {
-        
+      if (parameters()["to"] == "demandes") {
+        $demande = new Demande();
+        $demande->idutilisateur = $user->idutilisateur;
+        $demande->iddemande = $idproduit;
+        $demande->insert();
       } else {
-        
+        $offre = new Offre();
+        $offre->idutilisateur = $user->idutilisateur;
+        $offre->idoffre = $idproduit;
+        $offre->insert();
       }
-      exit;
 
+      header('Location: .?r=user/profil');
     }
 
 
-    $user = unserialize($_SESSION["user"]);
     $offres = $user->getOffres();
     $demandes = $user->getDemandes();
 
     $this->render("profil", ["user"=>$user,"offres"=>$offres,"demandes"=>$demandes]);
   }
   
+  public function delete(){
+    if (!isset($_SESSION["user"])) header('Location: .?r=user/login');
+    $idutilisateur = unserialize($_SESSION["user"])->idutilisateur;
+    
+    if (isset(parameters()["idproduit"])) {
+      $produit = new Produit(parameters()["idproduit"]);
+
+      $demandes = Demande::find(["iddemande" => parameters()["idproduit"]]);
+      $offres = Offre::find(["idoffre" => parameters()["idproduit"]]);
+
+      if (isset($demandes[0]) && $demandes[0]->idutilisateur->idutilisateur == $idutilisateur) {
+        $demandes[0]->delete();
+      }
+
+      if (isset($offres[0]) && $offres[0]->idutilisateur->idutilisateur == $idutilisateur) {
+        $offres[0]->delete();
+      }
+      if ($produit) {
+        $produit->delete();
+        echo "success";
+      } else {
+        echo "error";
+        header( 'HTTP/1.1 418' );
+      }
+      exit();
+    }
+  }
 
 
 }
