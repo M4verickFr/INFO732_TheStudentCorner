@@ -99,10 +99,11 @@ class UserController extends Controller {
       $produit = new Produit();
       $produit->$nom = parameters()["nom"];
       $produit->$description = parameters()["desc"];
-      $idproduit = $utilisateur->insert();
+      $produit->$type = parameters()["type"];
+      $idproduit = $produit->insert();
 
       if (parameters()["type"] == "1") {
-        $utilisateur->insert();
+        
       } else {
         
       }
