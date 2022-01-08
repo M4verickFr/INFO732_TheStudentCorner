@@ -31,7 +31,7 @@ class Utilisateur extends Model {
 		return false;
 	}
 
-
+	
 	public function getOffres() {
 		$st = db()->prepare("SELECT * from listeoffres WHERE idutilisateur = :idutilisateur");
 		$st->bindValue(":idutilisateur", $this->idutilisateur);
