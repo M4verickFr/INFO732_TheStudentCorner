@@ -23,8 +23,8 @@
                     <select class="form-control" id="idcampus" name="idcampus">
                         <option selected>Choose...</option>
                         <?php 
-                          foreach ($data["campus"] as $id => $name) {
-                            echo '<option value="'.($id+1).'">'.$name.'</option>';
+                          foreach ($data["campus"] as $campus) {
+                            echo '<option value="'.$campus->idcampus.'">'.$campus->nom_campus.'</option>';
                           }
                         ?>
                     </select>

@@ -7,7 +7,6 @@
 	<link rel="stylesheet" type="text/css" href="./css/bootstrap.css"/>
 	<link rel="stylesheet" type="text/css" href="./css/style.css"/>
 
-
 	<?php echo file_exists('./css/'.strtolower($model).'.css') ? "<link rel=\"stylesheet\" type=\"text/css\" href=\"./css/".strtolower($model).".css\"/>" : ""; ?>
 	<?php echo file_exists('./js/'.strtolower($model).'.js') ? "<script src=\"./js/".strtolower($model).".js\"></script>" : ""; ?>
 </head>
@@ -18,13 +17,10 @@
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container px-4 px-lg-5">
                 <a class="navbar-brand" href=".">The Student Corner</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                        <li class="nav-item"><a class="nav-link active" href=".">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href=".?r=about">About</a></li>
-                    </ul>
-                </div>
+				<ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4 flex-row h-100">
+					<li class="nav-item mx-2"><a class="nav-link active" href=".">Home</a></li>
+					<li class="nav-item mx-2"><a class="nav-link" href=".?r=about">About</a></li>
+				</ul>
 				<?php if (isset($_SESSION['user'])){?>
 					<a class="text-decoration-none d-flex px-2" href=".?r=user/profil">
 						<button class="btn btn-outline-dark" type="submit">

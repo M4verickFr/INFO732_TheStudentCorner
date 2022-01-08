@@ -48,6 +48,11 @@ CREATE TABLE IF NOT EXISTS utilisateur (
   FOREIGN KEY (idrole) REFERENCES role(idrole)
 );
 
+INSERT INTO `utilisateur` (`idutilisateur`, `nom`, `prenom`, `email`, `password`, `dateinscription`, `idcampus`) VALUES 
+(1, 'test', 'test', 'test@test', '$2y$10$o4DNZQcAhfldBmAWnjgQaeZ0EXf94CnofAAgAvKjan08xnuDvA4/.', '2021-11-15 09:20:51', 1),
+(2, 'Smith', 'Jhon', 'jhon.smith@etu.univ-smb.fr', 'password', '2021-11-17 09:20:51', 1),
+(3, 'Does', 'Jhon', 'jhon.does@etu.univ-smb.fr', 'password', '2021-11-16 09:20:51', 2); 
+
 CREATE TABLE IF NOT EXISTS avis (
   idavis int(11) NOT NULL AUTO_INCREMENT,
   idredacteur int(11) NOT NULL,
@@ -70,36 +75,19 @@ CREATE TABLE IF NOT EXISTS proposition (
     PRIMARY KEY (id)
 ); 
 
-
-CREATE TABLE IF NOT EXISTS service (
-    idservice int(11) NOT NULL AUTO_INCREMENT,
-    qualification varchar(100) NOT NULL,
-    noteprestation int(11) NOT NULL,
-    typeservice varchar(100) NOT NULL,
-    PRIMARY KEY (idservice)
-); 
-
-
-CREATE TABLE IF NOT EXISTS bien (
-    idbien int(11) NOT NULL AUTO_INCREMENT,
-    etat varchar(100) not null,
-    typebien varchar(100) not null,
-    PRIMARY KEY (idbien)
-); 
-
-
 CREATE TABLE IF NOT EXISTS produit (
     idproduit int(11) NOT NULL AUTO_INCREMENT,
     nom varchar(100) NOT NULL,
-    nom_categorie varchar(100) NOT NULL,
     description varchar(100) NOT NULL,
-    type int(2) NOT NULL,
-    idservice int(11),
-    idbien int(11),
-    PRIMARY KEY (idproduit),
-    FOREIGN KEY (idservice) REFERENCES service(idservice),
-    FOREIGN KEY (idbien) REFERENCES bien(idbien)
+    type int(11) NOT NULL,
+    PRIMARY KEY (idproduit)
 ); 
+
+INSERT INTO `produit` (`idproduit`, `nom`, `description`, `type`) VALUES 
+(1, 'Garde animaux', '5 ans expériences', 1),
+(2, 'Cours de soutien', 'Niveau collège', 1),
+(3, 'Téléphone', 'Bon état', 2),
+(4, 'Bureau', 'Neuf', 2);
 
 CREATE TABLE IF NOT EXISTS listeoffres (
     idutilisateur int(11) NOT NULL ,
@@ -108,6 +96,11 @@ CREATE TABLE IF NOT EXISTS listeoffres (
     FOREIGN KEY (idutilisateur) REFERENCES utilisateur(idutilisateur),
     FOREIGN KEY (idoffre) REFERENCES produit(idproduit)
 ); 
+
+INSERT INTO `listeoffres` (`idutilisateur`, `idoffre`) VALUES 
+(1, 1),
+(1, 2),
+(1, 4);
 
 
 CREATE TABLE IF NOT EXISTS listedemandes (
@@ -118,7 +111,5 @@ CREATE TABLE IF NOT EXISTS listedemandes (
     FOREIGN KEY (iddemande) REFERENCES produit(idproduit)
 ); 
 
-INSERT INTO `utilisateur` (`idutilisateur`, `nom`, `prenom`, `email`, `password`, `dateinscription`, `idcampus`) VALUES 
-(1, 'Smith', 'Jhon', 'jhon.smith@etu.univ-smb.fr', 'password', '2021-11-17 09:20:51', 1),
-(2, 'Does', 'Jhon', 'jhon.does@etu.univ-smb.fr', 'password', '2021-11-16 09:20:51', 2)
-; 
+INSERT INTO `listedemandes` (`idutilisateur`, `iddemande`) VALUES 
+(1, 3);

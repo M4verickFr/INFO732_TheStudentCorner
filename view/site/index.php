@@ -5,7 +5,7 @@
 				<div class="text-center text-white">
 					<!-- Page heading-->
 					<h1 class="mb-5">Rejoints rapidement le site d'echange entre etudiants.</h1>
-					<form class="form-subscribe" action=".?r=register" id="registerForm">
+					<form class="form-subscribe" id="registerForm" action=".?r=user/register" method="post">
 						<!-- Email address input-->
 						<div class="row">
 							<div class="col">

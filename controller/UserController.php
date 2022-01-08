@@ -11,10 +11,7 @@ class UserController extends Controller {
 
     if (isset($_SESSION["user"])) header('Location: .');
 
-    $campus = [
-      "Annecy",
-      "Chambery"
-    ];
+    $campus = Campus::find();
 
     if($_SERVER['REQUEST_METHOD'] == "GET") {
       $this->render("register", ["campus"=>$campus]);
@@ -42,7 +39,7 @@ class UserController extends Controller {
         $idutilisateur = $utilisateur->insert();
         
         $_SESSION["idutilisateur"] = $idutilisateur;
-        $_SESSION["user"] = Utilisateur::findOne(["idutilisateur" => $idutilisateur]);
+        $_SESSION["user"] = Utilisateur::find(["idutilisateur" => $idutilisateur]);
         header('Location: .');
 
       }else{
@@ -69,7 +66,7 @@ class UserController extends Controller {
 
         $utilisateur = Utilisateur::attempt(parameters()["email"], parameters()["password"]);
         if ($utilisateur) {
-          $_SESSION["user"] = $utilisateur;
+          $_SESSION["user"] = serialize($utilisateur);
           header('Location: .');
         } else {
           $this->render("login", "error");
@@ -88,8 +85,39 @@ class UserController extends Controller {
 
   public function profil(){
     if (!isset($_SESSION["user"])) header('Location: .?r=user/login');
-    $this->render("profil");
+
+    $params = [
+      "action" => "",
+      "type" => "",
+      "nom" => "",
+      "desc" => "",
+    ];
+
+    if (empty(array_diff_key($params, parameters())) && parameters()["action"] == "addProduct") {
+      var_dump(parameters());
+
+      $produit = new Produit();
+      $produit->$nom = parameters()["nom"];
+      $produit->$description = parameters()["desc"];
+      $idproduit = $utilisateur->insert();
+
+      if (parameters()["type"] == "1") {
+        $utilisateur->insert();
+      } else {
+        
+      }
+      exit;
+
+    }
+
+
+    $user = unserialize($_SESSION["user"]);
+    $offres = $user->getOffres();
+    $demandes = $user->getDemandes();
+
+    $this->render("profil", ["user"=>$user,"offres"=>$offres,"demandes"=>$demandes]);
   }
+  
 
 
 }

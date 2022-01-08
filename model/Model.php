@@ -88,30 +88,8 @@ class Model {
 		}
 	}
 
-	public static function findAll($params = null){
-		$class = get_called_class();
-		$table = strtolower($class);
 
-		$sql = "select id$table from $table";
-
-		if($params){
-			foreach($params as $attribute => $element){
-				foreach($element as $field => $action){
-					$sql .= " " . $attribute . " " . $field . " " . $action . "";
-				}
-			}
-		}
-
-		$st = db()->prepare($sql);
-		$st->execute();
-		$list = array();
-		while($row = $st->fetch(PDO::FETCH_ASSOC)) {
-			$list[] = new $class($row["id".$table]);
-		}
-		return $list;
-	}
-
-	public static function findOne($data, $operator = null, $params = null) {
+	public static function find($data = [], $operator = null, $params = null, $limit = false) {
         $class = get_called_class();
         $table = strtolower(get_called_class());
 
@@ -132,8 +110,9 @@ class Model {
             $res = implode(' and ', $data);
         }
 
-        $sql = "select id$table from $table where $res";
+        $sql = "select id$table from $table";
 
+		if ($res != "") $sql .= " where $res";
 
 		if($params){
 			foreach($params as $attribute => $element){
@@ -142,6 +121,11 @@ class Model {
 				}
 			}
 		}
+
+		if($limit) $sql .= " limit $limit";
+
+		var_dump($sql);
+
         $st = db()->prepare($sql);
         $st->execute();
         $list = array();
