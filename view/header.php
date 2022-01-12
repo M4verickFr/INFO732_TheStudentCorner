@@ -20,6 +20,7 @@
 				<ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4 flex-row h-100">
 					<li class="nav-item mx-2"><a class="nav-link active" href=".">Home</a></li>
 					<li class="nav-item mx-2"><a class="nav-link active" href=".?r=about">About</a></li>
+					<li class="nav-item mx-2"><a class="nav-link active" href=".?r=propositions">Mes propostion</a></li>
 				</ul>
 				<?php if (isset($_SESSION['user'])){?>
 					<a class="text-decoration-none d-flex px-2" href=".?r=user/profil">

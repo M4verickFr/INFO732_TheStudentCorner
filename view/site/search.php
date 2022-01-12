@@ -43,13 +43,18 @@
 													$demandes = "";
 													$offres = "";
 
+													// $demandes = implode(', ', $d[1]);
+
 													foreach($d[1] as $demande){
-														$demandes .= $demande->produit->nom . " ";
+														$demandes .= $demande->produit->nom . ", ";
 													}
 
 													foreach($d[2] as $offre){
-														$offres .= $offre->produit->nom . " ";
+														$offres .= $offre->produit->nom . ", ";
 													}
+
+													$demandes = substr($demandes, 0, -2);
+													$offres = substr($offres, 0, -2);
 
 													if ($demandes == "") $demandes = "Rien pour le moment";
 													if ($offres == "") $offres = "Rien pour le moment";

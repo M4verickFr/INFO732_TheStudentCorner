@@ -79,12 +79,16 @@ CREATE TABLE IF NOT EXISTS avis (
 
 CREATE TABLE IF NOT EXISTS proposition (
     idproposition int(11) NOT NULL AUTO_INCREMENT,
+    expediteur int(11) NOT NULL,
+    destinataire int(11) NOT NULL,
     titre varchar(100) NOT NULL,
     description varchar(100) NOT NULL,
     type varchar(100) NOT NULL,
     dateemission DATETIME NOT NULL,
-    vue boolean NOT NULL,
-    PRIMARY KEY (idproposition)
+    vue int(11) NOT NULL,
+    PRIMARY KEY (idproposition),
+    FOREIGN KEY (expediteur) REFERENCES utilisateur(idutilisateur),
+    FOREIGN KEY (destinataire) REFERENCES utilisateur(idutilisateur)
 ); 
 
 CREATE TABLE IF NOT EXISTS produit (

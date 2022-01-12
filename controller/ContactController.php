@@ -20,6 +20,8 @@ class ContactController extends Controller {
     if (!isset($_SESSION["user"])) header('Location: .');
     if (!isset(parameters()["to"])) header('Location: .');
 
+    $user = unserialize($_SESSION["user"]);
+
     $params = [
       "title" => "",
       "desc" => "",
@@ -30,14 +32,15 @@ class ContactController extends Controller {
     if (!empty(array_diff_key($params, parameters()))) header('Location: ?r=contact&to='.parameters()["to"]);
     
     $proposition = new Proposition();
+    $proposition->expediteur = $user->idutilisateur;
+    $proposition->destinataire = parameters()["to"];
     $proposition->titre = parameters()["title"];
     $proposition->description = parameters()["desc"];
     $proposition->type = 0;
     $proposition->dateemission = date('Y-m-d H:i:s');
-    $proposition->vue = false;
+    $proposition->vue = 0;
     $proposition->insert();
 
-    exit();
     header('Location: .');
   }
 
