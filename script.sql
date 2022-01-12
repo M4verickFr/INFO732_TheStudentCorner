@@ -63,6 +63,7 @@ INSERT INTO `utilisateur` (`idutilisateur`, `nom`, `prenom`, `email`, `password`
 (12, 'Poufu', 'Castor', 'castor.poufu@etu.univ-smb.fr', '$2y$10$o4DNZQcAhfldBmAWnjgQaeZ0EXf94CnofAAgAvKjan08xnuDvA4/.', '2021-11-16 09:20:51', 2), 
 (13, 'Calos', 'Béatrice', 'beatrice.carlos@etu.univ-smb.fr', '$2y$10$o4DNZQcAhfldBmAWnjgQaeZ0EXf94CnofAAgAvKjan08xnuDvA4/.', '2021-11-16 09:20:51', 2), 
 (14, 'Artis', 'mathieu', 'mathieu.artis@etu.univ-smb.fr', '$2y$10$o4DNZQcAhfldBmAWnjgQaeZ0EXf94CnofAAgAvKjan08xnuDvA4/.', '2021-11-16 09:20:51', 2); 
+(15, 'Fofana', 'Xiao Ping', 'xiaoping.fofana@etu.univ-smb.fr', '$2y$10$o4DNZQcAhfldBmAWnjgQaeZ0EXf94CnofAAgAvKjan08xnuDvA4/.', '2021-11-16 09:20:51', 2); 
 
 
 CREATE TABLE IF NOT EXISTS avis (
