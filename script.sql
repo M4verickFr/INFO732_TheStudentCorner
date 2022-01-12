@@ -87,7 +87,11 @@ INSERT INTO `produit` (`idproduit`, `nom`, `description`, `type`) VALUES
 (1, 'Garde animaux', '5 ans expériences', 1),
 (2, 'Cours de soutien', 'Niveau collège', 1),
 (3, 'Téléphone', 'Bon état', 2),
-(4, 'Bureau', 'Neuf', 2);
+(4, 'Bureau', 'Neuf', 2),
+(5, 'Produit1', 'DESC1', 1),
+(6, 'Produit2', 'DESC2', 1),
+(7, 'Produit3', 'DESC3', 2),
+(8, 'Produit4', 'DESC4', 2);
 
 CREATE TABLE IF NOT EXISTS offre (
     idutilisateur int(11) NOT NULL ,
@@ -100,7 +104,9 @@ CREATE TABLE IF NOT EXISTS offre (
 INSERT INTO `offre` (`idutilisateur`, `idoffre`) VALUES 
 (1, 1),
 (1, 2),
-(1, 4);
+(1, 4),
+(2, 7),
+(3, 8);
 
 CREATE TABLE IF NOT EXISTS demande (
     idutilisateur int(11) NOT NULL,
@@ -111,4 +117,6 @@ CREATE TABLE IF NOT EXISTS demande (
 ); 
 
 INSERT INTO `demande` (`idutilisateur`, `iddemande`) VALUES 
-(1, 3);
+(1, 3),
+(2, 6),
+(3, 5);
