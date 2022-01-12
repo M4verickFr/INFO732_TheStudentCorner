@@ -4,6 +4,13 @@ class Demande extends Model {
 
 	protected $_idutilisateur;
 	protected $_iddemande;
+	protected $_produit;
+
+	public function __construct($id=null){
+		parent::__construct($id);
+		$this->produit = new Produit($this->iddemande);
+	}
+
 
 	public function __toString() {
 		return get_class($this);

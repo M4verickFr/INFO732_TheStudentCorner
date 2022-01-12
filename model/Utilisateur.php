@@ -59,17 +59,25 @@ class Utilisateur extends Model {
 
 		$idutilisateur = unserialize($_SESSION["user"])->idutilisateur;
 
-		$st = db()->prepare("SELECT idproduit, utilisateur.idutilisateur FROM utilisateur
+		$sql = "SELECT utilisateur.idutilisateur FROM utilisateur
 		Join offre on offre.idutilisateur = utilisateur.idutilisateur
 		Join produit on offre.idoffre = produit.idproduit
-		WHere type=$type and utilisateur.idutilisateur IS NOT NULL and utilisateur.idutilisateur != $idutilisateur and (nom LIKE '%$search%' or prenom LIKE '%$search%')");
+		Where utilisateur.idutilisateur IS NOT NULL and utilisateur.idutilisateur != $idutilisateur 
+		and (utilisateur.nom LIKE '%$search%' or utilisateur.prenom LIKE '%$search%')";
+
+		if($type != "0"){
+			$sql .= " and type = $type";
+		}
+
+		$st = db()->prepare($sql);
 		$st->execute();
 		$res = array();
 
 		while($row = $st->fetch(PDO::FETCH_ASSOC)) {
-			$produit = new Produit($row['idproduit']);
 			$utilisateur = new Utilisateur($row['idutilisateur']);
-			$res[] = [$produit, $utilisateur];
+			$demandes = Demande::find(["idutilisateur"=>$utilisateur->idutilisateur]);
+			$offres = Offre::find(["idutilisateur"=>$utilisateur->idutilisateur]);
+			$res[] = [$utilisateur, $demandes, $offres];
 		}
 		return $res;
 

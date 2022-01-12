@@ -52,7 +52,7 @@
 								<div class="input-group d-flex justify-content-around">
 									<select name="type" class="col-md-2 rounded">
 										<option selected>Type...</option>
-										<option value="1">Service</option>
+										<option value="1">Service</ option>
 										<option value="2">Produit</option>
 									</select>
 	

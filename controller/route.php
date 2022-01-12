@@ -10,7 +10,7 @@ if (isset($_GET))
 
 function parameters() {
 	global $parameters;
-	$parameters = array_filter($parameters ,'strlen');
+	// $parameters = array_filter($parameters ,'strlen');
 	return $parameters;
 }
 
@@ -27,8 +27,8 @@ if (isset(parameters()["r"])) {
 	if (class_exists($controller)) {
 		$c = new $controller();
 		$c->$action();	
-	}
-	
+	} 
+
 
 } else {
 	$c = new SiteController();
