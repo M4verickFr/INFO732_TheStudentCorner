@@ -2,7 +2,7 @@
 
 class Proposition extends Model {
 
-	protected $_id;
+	protected $_idproposition;
 	protected $_titre;
 	protected $_description;
 	protected $_type;

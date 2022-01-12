@@ -64,6 +64,7 @@ INSERT INTO `utilisateur` (`idutilisateur`, `nom`, `prenom`, `email`, `password`
 (13, 'Calos', 'Béatrice', 'beatrice.carlos@etu.univ-smb.fr', '$2y$10$o4DNZQcAhfldBmAWnjgQaeZ0EXf94CnofAAgAvKjan08xnuDvA4/.', '2021-11-16 09:20:51', 2), 
 (14, 'Artis', 'mathieu', 'mathieu.artis@etu.univ-smb.fr', '$2y$10$o4DNZQcAhfldBmAWnjgQaeZ0EXf94CnofAAgAvKjan08xnuDvA4/.', '2021-11-16 09:20:51', 2); 
 
+
 CREATE TABLE IF NOT EXISTS avis (
   idavis int(11) NOT NULL AUTO_INCREMENT,
   idredacteur int(11) NOT NULL,
@@ -77,13 +78,13 @@ CREATE TABLE IF NOT EXISTS avis (
 );
 
 CREATE TABLE IF NOT EXISTS proposition (
-    id int(11) NOT NULL AUTO_INCREMENT,
+    idproposition int(11) NOT NULL AUTO_INCREMENT,
     titre varchar(100) NOT NULL,
     description varchar(100) NOT NULL,
     type varchar(100) NOT NULL,
     dateemission DATETIME NOT NULL,
     vue boolean NOT NULL,
-    PRIMARY KEY (id)
+    PRIMARY KEY (idproposition)
 ); 
 
 CREATE TABLE IF NOT EXISTS produit (

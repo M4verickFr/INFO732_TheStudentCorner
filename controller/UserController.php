@@ -39,7 +39,7 @@ class UserController extends Controller {
         $idutilisateur = $utilisateur->insert();
         
         $_SESSION["idutilisateur"] = $idutilisateur;
-        $_SESSION["user"] = Utilisateur::find(["idutilisateur" => $idutilisateur]);
+        $_SESSION["user"] = serialize(new Utilisateur($idutilisateur));
         header('Location: .');
 
       }else{
