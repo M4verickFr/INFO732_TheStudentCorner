@@ -83,7 +83,7 @@ CREATE TABLE IF NOT EXISTS proposition (
     type varchar(100) NOT NULL,
     dateemission DATETIME NOT NULL,
     vue boolean NOT NULL,
-    PRIMARY KEY (id)
+    PRIMARY KEY (idproposition)
 ); 
 
 CREATE TABLE IF NOT EXISTS produit (
