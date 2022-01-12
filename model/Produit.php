@@ -38,7 +38,6 @@ class Produit extends Model {
 
 
 	public static function lastOffers(){
-
 		$idutilisateur = unserialize($_SESSION["user"])->idutilisateur;
 		$st = db()->prepare("
 		SELECT idutilisateur FROM produit LEFT JOIN offre ON produit.idproduit = offre.idoffre	
