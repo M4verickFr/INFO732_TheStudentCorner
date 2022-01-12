@@ -9,7 +9,7 @@ class SiteController extends Controller {
 				$search = parameters()["search"];
 
 				$produits = Produit::search($type, $search);
-
+				
 				$utilisateurs = Utilisateur::search($type, $search);
 
 				$res = array_merge($produits,$utilisateurs);

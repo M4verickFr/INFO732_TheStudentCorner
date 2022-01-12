@@ -28,8 +28,8 @@ class Produit extends Model {
 
 		while($row = $st->fetch(PDO::FETCH_ASSOC)) {
 			$utilisateur = new Utilisateur($row['idutilisateur']);
-			$demandes = Demande::find(["idutilisateur"=>$utilisateur->idutilisateur]);
-			$offres = Offre::find(["idutilisateur"=>$utilisateur->idutilisateur]);
+			$demandes = Demande::findDemandes($utilisateur->idutilisateur);
+			$offres = Offre::findOffres($utilisateur->idutilisateur);
 			$res[] = [$utilisateur, $demandes, $offres];
 		}
 		return $res;
@@ -47,8 +47,8 @@ class Produit extends Model {
 
 		while($row = $st->fetch(PDO::FETCH_ASSOC)) {
 			$utilisateur = new Utilisateur($row['idutilisateur']);
-			$demandes = Demande::find(["idutilisateur"=>$utilisateur->idutilisateur]);
-			$offres = Offre::find(["idutilisateur"=>$utilisateur->idutilisateur]);
+			$demandes = Demande::findDemandes($utilisateur->idutilisateur);
+			$offres = Offre::findOffres($utilisateur->idutilisateur);
 			$res[] = [$utilisateur, $demandes, $offres];
 		}
 		return $res;
