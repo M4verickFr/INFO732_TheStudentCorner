@@ -8,10 +8,10 @@ class ContactController extends Controller {
     if (!isset(parameters()["to"])) header('Location: .');
 
     $user = unserialize($_SESSION["user"]);
-    $proposes = Offre::find(["idutilisateur"=>$user->idutilisateur]);
+    $proposes = Offre::findOffres($user->idutilisateur);
 
     $to = new Utilisateur(parameters()["to"]);
-    $demandes = Demande::find(["idutilisateur"=>$to->idutilisateur]);
+    $demandes = Demande::findDemandes($to->idutilisateur);
 
     $this->render("index", ["user"=>$user,"to"=>$to,"demandes"=>$demandes,"proposes"=>$proposes]);
   }
@@ -28,18 +28,17 @@ class ContactController extends Controller {
     ];
 
     if (!empty(array_diff_key($params, parameters()))) header('Location: ?r=contact&to='.parameters()["to"]);
-      
+    
     $proposition = new Proposition();
-
     $proposition->titre = parameters()["title"];
     $proposition->description = parameters()["desc"];
     $proposition->type = 0;
-    $proposition->dateemission
-    $proposition->vue
+    $proposition->dateemission = date('Y-m-d H:i:s');
+    $proposition->vue = false;
+    $proposition->insert();
 
-
-    var_dump(parameters());
     exit();
+    header('Location: .');
   }
 
 
