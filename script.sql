@@ -77,7 +77,7 @@ CREATE TABLE IF NOT EXISTS avis (
 );
 
 CREATE TABLE IF NOT EXISTS proposition (
-    id int(11) NOT NULL AUTO_INCREMENT,
+    idproposition int(11) NOT NULL AUTO_INCREMENT,
     titre varchar(100) NOT NULL,
     description varchar(100) NOT NULL,
     type varchar(100) NOT NULL,
