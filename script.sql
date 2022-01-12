@@ -116,7 +116,7 @@ INSERT INTO `produit` (`idproduit`, `nom`, `description`, `type`) VALUES
 (18, 'Sport', 'Curling', 2),
 (19, 'Soutien', 'aide aux devoirs', 2),
 (20, 'Courses', 'livraison de courses', 2),
-(21, "Traduction', 'traduction de l'anglais", 2),
+(21, 'Traduction', "traduction de l'anglais", 2),
 (22, 'Coiffeur', 'coupe de cheveux homme', 2),
 (23, 'Taillage de crayon', 'taille-crayon', 2),
 (24, 'Partiel', 'passage de partiel', 2),
