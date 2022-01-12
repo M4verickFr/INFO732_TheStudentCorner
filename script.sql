@@ -175,7 +175,7 @@ INSERT INTO `offre` (`idutilisateur`, `idoffre`) VALUES
 (12, 31),
 (13, 32),
 (14, 33),
-(6, 34,
+(6, 3),
 (4, 35),
 (9, 36);
 
