@@ -50,7 +50,7 @@ CREATE TABLE IF NOT EXISTS utilisateur (
 
 INSERT INTO `utilisateur` (`idutilisateur`, `nom`, `prenom`, `email`, `password`, `dateinscription`, `idcampus`) VALUES 
 (1, 'test', 'test', 'test@test', '$2y$10$o4DNZQcAhfldBmAWnjgQaeZ0EXf94CnofAAgAvKjan08xnuDvA4/.', '2021-11-15 09:20:51', 1),
-(2, 'Smith', 'Jhon', 'jhon.smith@etu.univ-smb.fr', 'password', '2021-11-17 09:20:51', 1),
+(2, 'Smith', 'Jhon', 'jhon.smith@etu.univ-smb.fr', '$2y$10$o4DNZQcAhfldBmAWnjgQaeZ0EXf94CnofAAgAvKjan08xnuDvA4/.', '2021-11-17 09:20:51', 1),
 (3, 'Does', 'Jhon', 'jhon.does@etu.univ-smb.fr', '$2y$10$o4DNZQcAhfldBmAWnjgQaeZ0EXf94CnofAAgAvKjan08xnuDvA4/.', '2021-11-16 09:20:51', 2),
 (4, 'Hornai', 'Mickeal', 'mickael.hornai@etu.univ-smb.fr', '$2y$10$o4DNZQcAhfldBmAWnjgQaeZ0EXf94CnofAAgAvKjan08xnuDvA4/.', '2021-11-16 09:20:51', 2), 
 (5, 'Dupleur', 'Tom', 'tom.dupleur@etu.univ-smb.fr', '$2y$10$o4DNZQcAhfldBmAWnjgQaeZ0EXf94CnofAAgAvKjan08xnuDvA4/.', '2021-11-16 09:20:51', 2), 

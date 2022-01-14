@@ -1,7 +1,18 @@
 <?php
 
-class UserController extends Controller {
+class UserController extends Controller implements IObservable {
 
+  public function __construct() {
+    parent::__construct();
+
+    $this->attach( new Mailer() );
+
+  }
+
+  public function attach( $observer )
+  {
+      $this->observers []= $observer;
+  }
 
   public function index(){
     header('Location: .');
@@ -39,7 +50,11 @@ class UserController extends Controller {
         $idutilisateur = $utilisateur->insert();
         
         $_SESSION["idutilisateur"] = $idutilisateur;
-        $_SESSION["user"] = serialize(new Utilisateur($idutilisateur));
+        $utilisateur = new Utilisateur($idutilisateur);
+        $_SESSION["user"] = serialize($utilisateur);
+
+        foreach( $this->observers as $o ) $o->onUserAdded($this, $utilisateur);
+
         header('Location: .');
 
       }else{
